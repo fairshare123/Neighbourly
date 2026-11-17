@@ -157,3 +157,35 @@ h1, h2, h3 { color: var(--forest); line-height: 1.2; letter-spacing: -0.01em; }
 @media (max-width: 380px) {
   .site-header .logo-mark { display: none; }   /* very small phones: hide the house icon in the header */
 }
+
+/* =========================================================
+   9. Section headings and category cards (Home page)
+   ========================================================= */
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+.eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage); }
+.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-top: 4px; }
+.section-head p { color: var(--muted); margin-top: 6px; }
+.link-arrow { font-weight: 600; color: var(--forest); }
+.link-arrow:hover { text-decoration: underline; }
+
+.category-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.category-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px 20px; box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.category-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.category-icon {
+  width: 50px; height: 50px; border-radius: 15px; background: var(--pale);
+  display: grid; place-items: center; font-size: 1.5rem; margin-bottom: 14px;
+}
+.category-card h3 { font-size: 1.05rem; }
+.category-card p { font-size: 0.88rem; color: var(--muted); margin-top: 4px; }
+
+@media (max-width: 980px) {
+  .category-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 560px) {
+  .category-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .category-card { padding: 18px 16px; }
+}
