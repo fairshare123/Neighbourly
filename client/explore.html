@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore · Neighbourly</title>
+
+  <!-- Fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Our shared stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER (same on every page; only the "active" link changes) ===== -->
+  <header class="site-header">
+    <nav class="container nav">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">🏡</span>Neighbourly
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explore.html" class="active">Explore</a></li>
+        <li><a href="about.html">About &amp; Safety</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-switch">
+          <button class="active">EN</button>
+          <button>한국어</button>
+        </div>
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="post.html" class="btn btn-primary btn-sm">+ <span class="label">Post</span></a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+
+    <!-- Page title and search -->
+    <section class="page-head">
+      <h1>Explore listings</h1>
+      <p>Everything your neighbors around Gachon are offering right now.</p>
+
+      <form class="search-bar" id="searchForm">
+        <span>🔍</span>
+        <input type="search" id="searchInput" placeholder="Search for a desk, tutoring, tent…">
+        <button type="submit" class="btn btn-primary btn-sm">Search</button>
+      </form>
+
+      <!-- Category chips: data-category says which category each one shows -->
+      <div class="chips" id="categoryChips">
+        <button class="chip active" data-category="all">All</button>
+        <button class="chip" data-category="services">🧹 Services</button>
+        <button class="chip" data-category="buy-sell">🛋️ Buy &amp; Sell</button>
+        <button class="chip" data-category="borrow-lend">🔁 Borrow &amp; Lend</button>
+        <button class="chip" data-category="free">🎁 Free Corner</button>
+        <button class="chip" data-category="language">💬 Language Exchange</button>
+      </div>
+    </section>
+
+    <div class="explore-layout">
+
+      <!-- Filters (left side on desktop, on top on phones) -->
+      <aside class="filters">
+        <h2>Filters</h2>
+
+        <div class="filter-group">
+          <label for="neighborhoodSelect">Neighborhood</label>
+          <select id="neighborhoodSelect" class="select">
+            <option value="all">All neighborhoods</option>
+            <option value="Bokjeong-dong">Bokjeong-dong</option>
+            <option value="Taepyeong-dong">Taepyeong-dong</option>
+            <option value="Sinheung-dong">Sinheung-dong</option>
+            <option value="Gachon Univ. Station">Gachon Univ. Station</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Price type</span>
+          <div class="segmented">
+            <label><input type="radio" name="priceType" value="all" checked><span>All</span></label>
+            <label><input type="radio" name="priceType" value="paid"><span>Paid</span></label>
+            <label><input type="radio" name="priceType" value="free"><span>Free</span></label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Price (₩)</span>
+          <div class="price-row">
+            <input type="number" id="minPrice" class="input" placeholder="Min" min="0">
+            <span>–</span>
+            <input type="number" id="maxPrice" class="input" placeholder="Max" min="0">
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-outline btn-block btn-sm" id="resetBtn">Reset filters</button>
+      </aside>
+
+      <!-- Results -->
+      <section>
+        <div class="results-bar">
+          <p class="results-count" id="resultsCount">Loading listings…</p>
+          <select id="sortSelect" class="select">
+            <option value="newest">Newest first</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+          </select>
+        </div>
+
+        <!-- JavaScript (explore.js) fills this box with listing cards -->
+        <div class="listing-grid" id="resultsGrid"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER (same on every page) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo"><span class="logo-mark">🏡</span>Neighbourly</a>
+          <p class="footer-tagline">Your neighborhood, made closer.</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="explore.html">Explore</a></li>
+          <li><a href="post.html">Post a listing</a></li>
+          <li><a href="about.html">About &amp; Safety</a></li>
+        </ul>
+      </div>
+      <p class="footer-bottom">© 2026 Neighbourly · Web Programming Project · Gachon University</p>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/explore.js"></script>
+</body>
+</html>
