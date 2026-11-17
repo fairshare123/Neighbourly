@@ -1,0 +1,9 @@
+# Secret settings (passwords, database keys) - never upload these
+.env
+
+# Downloaded packages - can be re-installed anytime with "npm install"
+node_modules/
+
+# System junk files
+.DS_Store
+Thumbs.db
