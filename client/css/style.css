@@ -189,3 +189,47 @@ h1, h2, h3 { color: var(--forest); line-height: 1.2; letter-spacing: -0.01em; }
   .category-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .category-card { padding: 18px 16px; }
 }
+
+/* =========================================================
+   10. Listing cards (used on Home, Explore and Profile pages)
+   ========================================================= */
+.listing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+
+.listing-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.listing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+/* Photo area: always the same shape (4:3) so the grid looks tidy */
+.listing-photo { position: relative; aspect-ratio: 4 / 3; background: var(--pale); overflow: hidden; }
+.listing-photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo-fallback { width: 100%; height: 100%; display: grid; place-items: center; font-size: 3rem; }
+
+/* Little label on top of the photo */
+.category-pill {
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(255, 255, 255, 0.92); color: var(--forest);
+  font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 999px;
+}
+
+.listing-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.listing-price { font-weight: 800; font-size: 1.1rem; color: var(--forest); }
+.listing-price .unit { font-weight: 500; font-size: 0.85rem; color: var(--muted); }
+.listing-title { font-size: 1rem; color: var(--ink); font-weight: 600; line-height: 1.35; }
+.listing-meta {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  margin-top: auto; padding-top: 8px; font-size: 0.82rem; color: var(--muted);
+}
+.listing-meta .rating { color: var(--ink); font-weight: 600; white-space: nowrap; }
+
+/* Paid vs free badges: free is warm beige so it stands out */
+.badge {
+  display: inline-block; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.04em;
+  padding: 3px 10px; border-radius: 999px;
+}
+.badge-free { background: #FBEBD5; color: #8A4F0E; }
+
+.empty-state { text-align: center; color: var(--muted); padding: 40px 0; grid-column: 1 / -1; }
