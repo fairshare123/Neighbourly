@@ -1,0 +1,159 @@
+/* =========================================================
+   NEIGHBOURLY - MAIN STYLESHEET
+   Every page uses this one file, so the whole site looks consistent.
+   ========================================================= */
+
+/* ---------- 1. Design tokens (our colours, sizes, shadows) ----------
+   We save each value once as a "variable" and reuse it everywhere.
+   To change a colour on the whole site, change it only here. */
+:root {
+  --forest: #24594B;       /* main brand green: buttons, headings */
+  --forest-dark: #1A4237;  /* darker green: hover states, footer */
+  --sage: #6D967A;         /* soft green: small labels */
+  --pale: #DCE8D9;         /* very light green: backgrounds, chips */
+  --cream: #F6F4EC;        /* page background */
+  --beige: #E8B77A;        /* warm accent: highlights */
+  --ink: #1F2A26;          /* main text colour */
+  --muted: #5B6B64;        /* secondary text colour */
+  --white: #FFFFFF;
+  --border: rgba(36, 89, 75, 0.12);
+
+  --radius: 18px;          /* rounded corners for cards */
+  --radius-sm: 12px;       /* rounded corners for inputs, small items */
+  --shadow: 0 8px 28px rgba(36, 89, 75, 0.10);
+  --shadow-sm: 0 2px 10px rgba(36, 89, 75, 0.06);
+}
+
+/* ---------- 2. Base styles ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Plus Jakarta Sans", "Noto Sans KR", system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;     /* keeps the footer at the bottom */
+}
+main { flex: 1; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; }
+
+h1, h2, h3 { color: var(--forest); line-height: 1.2; letter-spacing: -0.01em; }
+
+/* ---------- 3. Layout helpers ---------- */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 64px 0; }
+
+/* ---------- 4. Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 20px; border-radius: 999px; border: 2px solid transparent;
+  font-weight: 600; font-size: 0.95rem; cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary { background: var(--forest); color: var(--cream); }
+.btn-primary:hover { background: var(--forest-dark); }
+
+.btn-outline { background: transparent; color: var(--forest); border-color: var(--forest); }
+.btn-outline:hover { background: var(--pale); }
+
+.btn-ghost { background: transparent; color: var(--muted); }
+.btn-ghost:hover { background: var(--pale); color: var(--forest); }
+
+.btn-sm { padding: 7px 14px; font-size: 0.88rem; }
+
+/* ---------- 5. Header and navigation ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 100;          /* stays at the top while scrolling */
+  background: rgba(246, 244, 236, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 70px; gap: 16px; }
+
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.3rem; color: var(--forest); }
+.logo-mark {
+  width: 36px; height: 36px; border-radius: 11px; background: var(--forest);
+  display: grid; place-items: center; font-size: 1.05rem;
+}
+
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a {
+  display: block; padding: 8px 14px; border-radius: 999px;
+  font-weight: 500; font-size: 0.95rem; color: var(--muted);
+  transition: background 0.2s, color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { background: var(--pale); color: var(--forest); }
+
+.nav-actions { display: flex; align-items: center; gap: 8px; }
+
+/* EN / 한국어 switch */
+.lang-switch { display: flex; background: var(--pale); border-radius: 999px; padding: 3px; }
+.lang-switch button {
+  border: 0; background: transparent; cursor: pointer;
+  padding: 5px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: var(--forest);
+  white-space: nowrap;   /* never break "한국어" onto several lines */
+}
+.lang-switch button.active { background: var(--white); box-shadow: var(--shadow-sm); }
+
+/* Hamburger button (only visible on small screens) */
+.menu-btn {
+  display: none; width: 42px; height: 42px; border: 0; border-radius: 10px;
+  background: transparent; color: var(--forest); font-size: 1.4rem; cursor: pointer;
+}
+.menu-btn:hover { background: var(--pale); }
+
+/* ---------- 6. Hero (top section of the home page) ---------- */
+.hero { padding: 72px 0 56px; }
+.hero h1 { font-size: clamp(2.3rem, 5vw, 3.5rem); font-weight: 800; }
+.hero .tagline { font-size: 1.2rem; color: var(--muted); margin-top: 14px; max-width: 560px; }
+.hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+/* ---------- 7. Footer ---------- */
+.site-footer { background: var(--forest-dark); color: var(--pale); padding: 40px 0 28px; margin-top: 40px; }
+.footer-grid { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.site-footer .logo { color: var(--cream); }
+.site-footer .logo-mark { background: var(--beige); }
+.footer-tagline { margin-top: 8px; font-size: 0.92rem; opacity: 0.85; }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; list-style: none; }
+.footer-links a { font-size: 0.92rem; opacity: 0.85; }
+.footer-links a:hover { opacity: 1; text-decoration: underline; }
+.footer-bottom {
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(220, 232, 217, 0.15);
+  font-size: 0.82rem; opacity: 0.7;
+}
+
+/* ---------- 8. Responsive: tablets and phones ---------- */
+@media (max-width: 860px) {
+  .menu-btn { display: block; }
+  .nav-links {
+    display: none;                              /* hidden until the hamburger is clicked */
+    position: absolute; top: 70px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch;
+    background: var(--cream); padding: 10px 16px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+  .nav-actions .btn-ghost { display: none; }   /* hide "Log in" to save space */
+}
+
+@media (max-width: 560px) {
+  .container { padding: 0 16px; }
+  .section { padding: 48px 0; }
+  .hero { padding: 44px 0 36px; }
+  .nav-actions .btn-primary .label { display: none; }  /* "+ Post" becomes just "+" */
+  .nav-actions { gap: 4px; }
+  .logo { font-size: 1.15rem; gap: 8px; }
+  .logo-mark { width: 32px; height: 32px; }
+  .lang-switch button { padding: 5px 8px; }
+}
+
+@media (max-width: 380px) {
+  .site-header .logo-mark { display: none; }   /* very small phones: hide the house icon in the header */
+}
